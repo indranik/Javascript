@@ -97,30 +97,21 @@ function queryDataSet() {
 }
 
 function RenderTable_Default(){
+    //Instead of returing ALL the rows which can be very time consuming, this code gets a subset of the data
     filteredAddress = dataSet.filter(function (address){ 
         return  (address.country.toLowerCase() === 'us') && (address.state.toLowerCase() === 'ca');});
-      // The outer loop fills the rows
-      // The inner loop fills the cells for each row
-      for (var i = 0; i < filteredAddress.length; i++) {
-        // Insert a row into the table at position i
-        var $row = $tbody.insertRow(i);
-        // Insert five cells into the newly created row
-        var rowEntry = Object.values(filteredAddress[i])
-      //console.log(rowEntry.length);
-      for (var j = 0; j < rowEntry.length; j++) {
-
-          var $cell = $row.insertCell(j);
-          $cell.innerText = rowEntry[j]; 
-        } 
-      }
+        RenderTable();
+        $userInputState.value = 'ca';
+        $userInputCountry.value = 'us';
       };
+
 function RenderTable(){
         // The outer loop fills the rows
         // The inner loop fills the cells for each row
         for (var i = 0; i < filteredAddress.length; i++) {
           // Insert a row into the table at position i
           var $row = $tbody.insertRow(i);
-          // Insert five cells into the newly created row
+          // Insert cells into the newly created row
           var rowEntry = Object.values(filteredAddress[i])
         console.log(rowEntry.length);
         for (var j = 0; j < rowEntry.length; j++) {
