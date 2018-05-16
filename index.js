@@ -9,6 +9,7 @@ var $submitBtn = document.querySelector("#search");
 var $clearBtn = document.querySelector("#clearSearch");
 
 
+
 // Start the table body with a blank HTML
 $tbody.innerHTML = "";
 
@@ -97,15 +98,36 @@ function queryDataSet() {
 }
 
 function RenderTable_Default(){
-    //Instead of returing ALL the rows which can be very time consuming, this code gets a subset of the data
-    filteredAddress = dataSet.filter(function (address){ 
-        return  (address.country.toLowerCase() === 'us') && (address.state.toLowerCase() === 'ca');});
-        RenderTable();
-        $userInputState.value = 'ca';
-        $userInputCountry.value = 'us';
-      };
+    
+// Start the table body with a blank HTML
 
+    $tbody.innerHTML = "";
+      };
+/*       function RenderTable_Default(){
+    
+        // Start the table body with a blank HTML
+        
+            $tbody.innerHTML = "";
+        
+          //$progressBar.style.display = block;
+          document.getElementById("progressBar").style.visibility = "visible";
+        
+            
+            //Instead of returing ALL the rows which can be very time consuming, this code gets a subset of the data
+            filteredAddress = dataSet.filter(function (address){ 
+                return  (address.country.toLowerCase() === 'us') && (address.state.toLowerCase() === 'ca');});
+                RenderTable();
+                $userInputState.value = 'ca';
+                $userInputCountry.value = 'us';
+              }; */
+        
 function RenderTable(){
+    // Start the table body with a blank HTML
+   
+    $tbody.innerHTML = "";
+    //$progressBar.style.display = block;
+    document.getElementById("progressBar").style.visibility = "visible";
+
         // The outer loop fills the rows
         // The inner loop fills the cells for each row
         for (var i = 0; i < filteredAddress.length; i++) {
@@ -113,13 +135,15 @@ function RenderTable(){
           var $row = $tbody.insertRow(i);
           // Insert cells into the newly created row
           var rowEntry = Object.values(filteredAddress[i])
-        console.log(rowEntry.length);
+        //console.log(rowEntry.length);
         for (var j = 0; j < rowEntry.length; j++) {
   
             var $cell = $row.insertCell(j);
             $cell.innerText = rowEntry[j]; 
           } 
         }
+        document.getElementById("progressBar").style.visibility = "hidden";
+        //$progressBar.style.display = none;
         };
 // When the submit button is clicked, call the handleSubmitClick function
 $submitBtn.addEventListener("click", handleSubmitClick);
@@ -128,20 +152,34 @@ $clearBtn.addEventListener("click", handleClearSearchClick);
 function handleClearSearchClick(event) {
     // The default behavior of a button clicked inside of a form is to try to submit the form somewhere (which we don't want)
     event.preventDefault();
+
+    document.getElementById("progressBar").style.visibility = "hidden";
+
+   
+    //$tbody.innerHTML = "";
+
     $userInputDate.value = "" ;
     $userInputCity.value = "";
     $userInputState.value = "";
     $userInputCountry.value = "";
     $userInputShape.value = "";
-    RenderTable_Default();
+    filteredAddress = [];
   
+    RenderTable();
+
+   
   }
 
 function handleSubmitClick(event) {
   // The default behavior of a button clicked inside of a form is to try to submit the form somewhere (which we don't want)
   event.preventDefault();
+
+  document.getElementById("progressBar").style.visibility = "visible";
+  // Start the table body with a blank HTML
+    $tbody.innerHTML = "";
+
   filteredAddress = dataSet;
-  $tbody.innerHTML = "";
+  
 
   // Get user input
   
@@ -214,15 +252,18 @@ function handleSubmitClick(event) {
       $userInputState.value = "";
       $userInputCountry.value = "";
       $userInputShape.value = "";
-      RenderTable_Default();
+      $tbody.innerHTML = "";
+      document.getElementById("progressBar").style.visibility = "hidden";
+      // RenderTable_Default();
 
      }
     else{RenderTable();};
   
   
     }
-    else {RenderTable_Default()}
+ else {filteredAddress =[];}
 
 }
-console.log('Results Returned '+ filteredAddress.length)
+//console.log('Results Returned '+ filteredAddress.length)
 RenderTable_Default();
+document.getElementById("progressBar").style.visibility = "hidden";

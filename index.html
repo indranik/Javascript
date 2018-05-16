@@ -5,15 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>UFO Sightings</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
-  <link rel="stylesheet" href="styles.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
-  <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-  <script>$(document).ready( function () {
-    $('#tblUFOsightings').DataTable();} );
-  </script> 
 
+  
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+  
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script> 
+  <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script> 
+  <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+   
 </head>
 
 <body>
@@ -92,10 +94,20 @@
     </table>
       </div>
     </div>
+    <div class="progress" id = "progressBar" >
+        <div class="progress-bar" role="progressbar" aria-valuenow="70"
+        aria-valuemin="0" aria-valuemax="100" style="width:70%">
+          Processing...
+        </div>
+      </div>
   </div>
   <script src="data.js" type="text/javascript"></script>
-  <script 
+ 
   <script src="index.js" type="text/javascript"></script>
+ <!--  <script>$(document).ready( function () {
+      $('#tblUFOsightings').DataTable();} );
+    </script>  -->
+  
 </body>
 
 </html>
