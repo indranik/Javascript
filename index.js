@@ -114,7 +114,7 @@ function RenderTable_Default(){
         } 
       }
       };
-      function RenderTable(){
+function RenderTable(){
         // The outer loop fills the rows
         // The inner loop fills the cells for each row
         for (var i = 0; i < filteredAddress.length; i++) {
@@ -154,15 +154,19 @@ function handleSubmitClick(event) {
 
   // Get user input
   
-  var searchCriteria = {state : $userInputState.value.trim(),
-    city : $userInputCity.value.trim()
+  var searchCriteria = {'state' : $userInputState.value.trim(),
+    'city' : $userInputCity.value.trim(),
+    'country' : $userInputCountry.value.trim(),
+    'datetime' : $userInputDate.value.trim(),
+    'shape' : $userInputShape.value.trim()
+
      };
  // narrow down the search criteria based on the what the user chose to use as filter.
   var filteredSearchCritera1 = searchCriteria;
       for (var key in filteredSearchCritera1) {
         if (filteredSearchCritera1[key].length == 0) delete filteredSearchCritera1[key];
       }
-  console.log(filteredSearchCritera1);
+  
 
   filteredAddress1 = dataSet;
 
@@ -201,7 +205,7 @@ function handleSubmitClick(event) {
                 break;
                 case 'datetime':
                       filteredAddress1 = filteredAddress.filter(function (address){
-                        return  address.datetime.toLowerCase() === arrCriteriaValues[i].toLowerCase() ;}
+                        return  address.datetime === arrCriteriaValues[i] ;}
                       );
                       
                 break;
