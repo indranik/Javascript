@@ -26,14 +26,13 @@ var filteredAddress = dataSet
 
 function queryDataSet() {
     dataSet.forEach(function (item) {
-        //populating the dropdowns to aviod bad user input.
+        //push the name string in the array
         arrStateNames.push(item.state);
         arrCityNames.push(item.city);
         arrCountryNames.push(item.country);
         arrDateTime.push(item.datetime);
         arrshape.push(item.shape);
     });
-
     queryDataSet_1();
 
     function queryDataSet_1() {
@@ -98,13 +97,13 @@ function queryDataSet() {
     }
 }
 
-function RenderTable_Default(){
+/* function RenderTable_Default(){
     
 // Start the table body with a blank HTML
 
     $tbody.innerHTML = "";
-      }; 
- function RenderTable_OnRefesh(){
+      }; */
+ function RenderTable_Default(){
     
         // Start the table body with a blank HTML
         
@@ -148,6 +147,8 @@ function RenderTable(){
         };
 // When the submit button is clicked, call the handleSubmitClick function
 $submitBtn.addEventListener("click", handleSubmitClick);
+
+/* The following code was written for clearing out the current selection/data.
  
 $clearBtn.addEventListener("click", handleClearSearchClick);
 
@@ -171,7 +172,7 @@ function handleClearSearchClick(event) {
 
    
   }
- 
+ */
 function handleSubmitClick(event) {
   // The default behavior of a button clicked inside of a form is to try to submit the form somewhere (which we don't want)
   event.preventDefault();
@@ -267,8 +268,15 @@ function handleSubmitClick(event) {
 
 };
 //console.log('Results Returned '+ filteredAddress.length)
-RenderTable_OnRefesh();
+RenderTable_Default();
 document.getElementById("progressBar").style.visibility = "hidden";
 
+//Add pagination to the table to show 10 -100 entries per page
 
+newFunction();
+function newFunction() {
+    $(document).ready(function () {
+        $('#tblUFOsightings').DataTable();
+    });
+}
 
