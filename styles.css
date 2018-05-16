@@ -1,0 +1,27 @@
+.form-control {
+  display: inline-block;
+}
+
+#Banner {background-color:rgb(9, 3, 97);
+max-height: 12pc;
+padding-top: 10px;
+padding-bottom: 10px;
+margin-bottom: 0px;
+color: whitesmoke}
+
+#Introduction{
+background-color:rgb(129, 5, 47);color:whitesmoke;
+border-radius: 6px;
+}
+
+h1{padding-top: 0px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+
+
+h3{padding-left: 10px;}
+h5{padding-left: 10px;padding-bottom: 10px;}
+
+#search{background-color:rgb(9, 3, 97) }
+#clearSearch{background-color:rgb(129, 5, 47) }
